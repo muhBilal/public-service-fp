@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <string>
 
@@ -18,7 +19,7 @@ void tampilkanMenu() {
     cout << "2. Tampilkan Laporan\n";
     cout << "3. Edit Laporan\n";
     cout << "4. Hapus Laporan\n";
-    cout << "5. Keluar\n";
+    cout << "5. Keluar dan Simpan\n";
     cout << "Pilih menu: ";
 }
 
@@ -80,6 +81,22 @@ void hapusLaporan() {
     }
 }
 
+// Fungsi untuk menyimpan laporan ke file
+void simpanLaporanKeFile() {
+    ofstream file("data.txt");
+    if (file.is_open()) {
+        for (const auto &laporan : daftarLaporan) {
+            file << "Nama: " << laporan.nama << endl;
+            file << "Permasalahan: " << laporan.permasalahan << endl;
+            file << "-------------------\n";
+        }
+        file.close();
+        cout << "Data berhasil disimpan ke data.txt.\n";
+    } else {
+        cout << "Gagal membuka file untuk disimpan.\n";
+    }
+}
+
 int main() {
     int pilihan;
     do {
@@ -99,6 +116,7 @@ int main() {
                 hapusLaporan();
                 break;
             case 5:
+                simpanLaporanKeFile();
                 cout << "Program selesai.\n";
                 break;
             default:
