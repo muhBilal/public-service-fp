@@ -2,12 +2,15 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <ctime>
 
 using namespace std;
 
 struct Laporan {
     string nama;
     string permasalahan;
+    string lokasi;
+    string jenisLaporan;
 };
 
 vector<Laporan> daftarLaporan; // Vektor untuk menyimpan semua laporan
@@ -26,11 +29,16 @@ void tampilkanMenu() {
 // Fungsi untuk menambah laporan baru
 void tambahLaporan() {
     Laporan laporanBaru;
+
     cout << "Masukkan nama: ";
     cin.ignore();
     getline(cin, laporanBaru.nama);
     cout << "Masukkan permasalahan: ";
     getline(cin, laporanBaru.permasalahan);
+    cout << "Masukkan lokasi: ";
+    getline(cin, laporanBaru.lokasi);
+    cout << "Masukkan jenis laporan: ";
+    getline(cin, laporanBaru.jenisLaporan);
     daftarLaporan.push_back(laporanBaru);
     cout << "Laporan telah ditambahkan!\n";
 }
@@ -45,6 +53,8 @@ void tampilkanSemuaLaporan() {
             cout << "Laporan " << i + 1 << ":\n";
             cout << "Nama: " << daftarLaporan[i].nama << endl;
             cout << "Permasalahan: " << daftarLaporan[i].permasalahan << endl;
+            cout << "Lokasi: " << daftarLaporan[i].lokasi << endl;
+            cout << "Jenis Laporan: " << daftarLaporan[i].jenisLaporan << endl;
             cout << "-------------------\n";
         }
     }
@@ -62,6 +72,10 @@ void editLaporan() {
         getline(cin, laporan.nama);
         cout << "Masukkan permasalahan baru: ";
         getline(cin, laporan.permasalahan);
+        cout << "Masukkan lokasi baru: ";
+        getline(cin, laporan.lokasi);
+        cout << "Masukkan jenis laporan baru: ";
+        getline(cin, laporan.jenisLaporan);
         cout << "Laporan berhasil diubah!\n";
     } else {
         cout << "Id laporan tidak valid.\n";
@@ -88,6 +102,8 @@ void simpanLaporanKeFile() {
         for (const auto &laporan : daftarLaporan) {
             file << "Nama: " << laporan.nama << endl;
             file << "Permasalahan: " << laporan.permasalahan << endl;
+            file << "Lokasi: " << laporan.lokasi << endl;
+            file << "Jenis Laporan: " << laporan.jenisLaporan << endl;
             file << "-------------------\n";
         }
         file.close();
