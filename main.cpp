@@ -10,6 +10,7 @@ struct Laporan {
     string nama;
     string permasalahan;
     string lokasi;
+    string tanggal;
     string jenisLaporan;
 };
 
@@ -39,6 +40,10 @@ void tambahLaporan() {
     getline(cin, laporanBaru.lokasi);
     cout << "Masukkan jenis laporan: ";
     getline(cin, laporanBaru.jenisLaporan);
+    time_t now = time(0);
+    char* dt = ctime(&now);
+    laporanBaru.tanggal = dt; 
+
     daftarLaporan.push_back(laporanBaru);
     cout << "Laporan telah ditambahkan!\n";
 }
@@ -104,6 +109,7 @@ void simpanLaporanKeFile() {
             file << "Permasalahan: " << laporan.permasalahan << endl;
             file << "Lokasi: " << laporan.lokasi << endl;
             file << "Jenis Laporan: " << laporan.jenisLaporan << endl;
+            file << "Tanggal: " << laporan.tanggal;
             file << "-------------------\n";
         }
         file.close();
