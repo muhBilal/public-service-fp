@@ -155,7 +155,7 @@ int main() {
                 break;
             case 5:
                 simpanLaporanKeFile();
-                cout << "Program Aelesai.\n";
+                cout << "Program Selesai.\n";
                 break;
             default:
                 cout << "Pilihan Tidak Valid. Silakan Pilih Menu Yang Benar.\n";
