@@ -103,15 +103,7 @@ void editLaporan() {
 
 // Fungsi untuk menghapus laporan
 void hapusLaporan() {
-    int idLaporan;
-    cout << "Masukkan ID Laporan Yang Ingin Dihapus: ";
-    cin >> idLaporan;
-    if (idLaporan > 0 && idLaporan <= daftarLaporan.size()) {
-        daftarLaporan.erase(daftarLaporan.begin() + idLaporan - 1);
-        cout << "Laporan Berhasil Dihapus!\n";
-    } else {
-        cout << "ID Laporan Tidak Valid.\n";
-    }
+	daftarLaporan.erase(daftarLaporan.end() - 1);
 }
 
 // Fungsi untuk menyimpan laporan ke file
